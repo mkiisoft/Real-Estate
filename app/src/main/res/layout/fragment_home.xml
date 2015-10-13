@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.renderas.soldty.Fragment_Home">
+
+    <com.google.android.gms.maps.MapView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mapViewHome"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_below="@id/mapViewHome">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/home_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+            <com.renderas.soldty.utils.CircularProgressBar
+                android:id="@+id/circularProgress"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:indeterminate="true"
+                app:cpb_color="#FFee44"
+                app:cpb_colors="@array/gplus_colors"
+                app:cpb_max_sweep_angle="300"
+                app:cpb_min_sweep_angle="10"
+                app:cpb_rotation_speed="1.0"
+                app:cpb_stroke_width="4dp"
+                app:cpb_sweep_speed="1.0" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.renderas.soldty.utils.FloatingActionButton
+        android:id="@+id/map_floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_colorNormal="@color/soldty_orange"
+        app:fab_colorPressed="@color/soldty_orange_press"
+        app:fab_icon="@drawable/ic_google_maps_white_24dp"
+        app:fab_size="mini"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/mapViewHome"
+        android:layout_marginTop="-35dp" />
+
+</RelativeLayout>
+

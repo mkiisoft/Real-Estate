@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+
+    <RelativeLayout
+        android:id="@+id/nav_header_container"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <com.renderas.soldty.utils.RoundedImageView
+            android:id="@+id/user_id_img"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:corner_radius="100dp"
+            app:border_width="3dp"
+            app:border_color="#ffffff"
+            android:src="@drawable/ic_profile"
+            android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_id_img"
+            android:text="Bienvenido a Soldty"
+            android:id="@+id/user_id"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FFF"
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/drawerList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav_header_container"
+        android:layout_marginTop="15dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/logo_mobile"
+        android:src="@drawable/logo_mobile"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp" />
+
+
+</RelativeLayout>
+

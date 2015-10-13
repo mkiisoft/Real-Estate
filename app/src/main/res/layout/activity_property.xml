@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.renderas.soldty.utils.AspectRatioImageView
+        android:id="@+id/fullimg"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:clickable="true"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:id="@+id/details_price_decoration"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/price_decoration" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="u$s price"
+            android:id="@+id/details_price"
+            android:background="#fa1505"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <uk.co.chrisjenx.paralloid.views.ParallaxScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingTop="150dp">
+
+            <RelativeLayout
+                android:id="@+id/stickylayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/gradienteinv">
+
+                <FrameLayout
+                    android:id="@+id/imagecontainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <RelativeLayout
+                        android:id="@+id/namereceipt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom">
+
+                        <TextView
+                            android:id="@+id/property_type"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="bottom|left"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:paddingTop="20dp"
+                            android:text="Tipo Propiedad"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="#FFF"
+                            android:textSize="24dp" />
+                    </RelativeLayout>
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearviews"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/imagecontainer"
+                    android:orientation="horizontal"
+                    android:paddingLeft="12dp"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:id="@+id/country_city"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="top|left"
+                        android:text="Country"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#FFF"
+                        android:textSize="22dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/animtext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/stickylayout"
+                android:background="#FFFFFF" >
+
+                <LinearLayout
+                    android:id="@+id/segment_author"
+                    android:layout_width="fill_parent"
+                    android:layout_height="95dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="5dp">
+
+                    <com.renderas.soldty.utils.RoundedImageView
+                        android:id="@+id/profile_settings_img"
+                        android:layout_width="85dp"
+                        android:layout_height="fill_parent"
+                        android:src="@drawable/emptypro"
+                        app:corner_radius="100dp"
+                        app:border_width="3dp"
+                        app:border_color="#01b901"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp">
+
+                        <TextView
+                            android:id="@+id/authors"
+                            android:layout_width="fill_parent"
+                            android:layout_height="80dp"
+                            android:text="Medium Text"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#606060"
+                            android:textSize="21sp"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal|left"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp" />
+
+                        <Button
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="VER MAS"
+                            android:id="@+id/view_more"
+                            android:background="@drawable/viewmore_btn"
+                            android:textColor="@color/checktxt"
+                            android:elevation="0dp"
+                            android:translationZ="0dp"
+                            android:layout_marginBottom="10dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/segment_author"
+                    android:text="DETALLES"
+                    android:id="@+id/property_details_title"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:textColor="#707070"
+                    android:textSize="20dp" />
+
+                <LinearLayout
+                    android:id="@+id/property_details"
+                    android:layout_below="@id/property_details_title"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/details_bedrooms_img"
+                                android:src="@drawable/ic_bed"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="New Text"
+                                android:id="@+id/details_bedrooms"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/details_condition_img"
+                                android:src="@drawable/ic_condition"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="New Text"
+                                android:id="@+id/details_condition"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|left" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/details_sqmeters_img"
+                                android:src="@drawable/ic_mts"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="New Text"
+                                android:id="@+id/details_sqmeters"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/details_old_img"
+                                android:src="@drawable/ic_old"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="New Text"
+                                android:id="@+id/details_old"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|left" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/property_details"
+                    android:text="DESCRIPCIÓN"
+                    android:id="@+id/property_details_description"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:textColor="#707070"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/text_details_property"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/property_details_description"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="10dp"
+                    android:text="Texto de la noticia"
+                    android:textColor="#707070"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gallery_layout"
+                    android:layout_below="@+id/text_details_property">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="GALERIA"
+                        android:id="@+id/gallery_title"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="#707070"
+                        android:textSize="20dp" />
+
+                    <com.renderas.soldty.utils.ExpandableHeightGridView
+                        android:id="@+id/gallery_grid"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_details_property"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:numColumns="3"
+                        android:verticalSpacing="5dp"
+                        android:horizontalSpacing="5dp">
+                    </com.renderas.soldty.utils.ExpandableHeightGridView>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UBICACIÓN"
+                    android:id="@+id/property_details_location"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:textColor="#707070"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/gallery_layout"
+                    android:layout_marginTop="15dp" />
+
+                <fragment
+                    android:id="@+id/mapView"
+                    android:layout_below="@id/property_details_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    class="com.renderas.soldty.utils.WorkAroundMapFragment" />
+            </RelativeLayout>
+
+            <com.renderas.soldty.utils.FloatingActionsMenu
+                android:id="@+id/multiple_actions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentRight="true"
+                app:fab_addButtonColorNormal="@color/soldty_orange"
+                app:fab_addButtonColorPressed="@color/soldty_orange_press"
+                app:fab_addButtonPlusIconColor="@color/white"
+                app:fab_labelStyle="@style/menu_labels_style"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="90dp">
+
+                <com.renderas.soldty.utils.FloatingActionButton
+                    android:id="@+id/call_floating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_colorNormal="@color/soldty_orange"
+                    app:fab_colorPressed="@color/soldty_orange_press"
+                    app:fab_icon="@drawable/ic_phone_white_24dp"
+                    app:fab_size="mini" />
+
+                <com.renderas.soldty.utils.FloatingActionButton
+                    android:id="@+id/email_floating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_colorNormal="@color/soldty_orange"
+                    app:fab_colorPressed="@color/soldty_orange_press"
+                    app:fab_icon="@drawable/ic_email_white_24dp"
+                    app:fab_size="mini" />
+
+                <com.renderas.soldty.utils.FloatingActionButton
+                    android:id="@+id/save_floating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_colorNormal="@color/soldty_orange"
+                    app:fab_colorPressed="@color/soldty_orange_press"
+                    app:fab_icon="@drawable/ic_star_empty_white_24dp"
+                    app:fab_size="mini" />
+
+            </com.renderas.soldty.utils.FloatingActionsMenu>
+
+        </RelativeLayout>
+
+    </uk.co.chrisjenx.paralloid.views.ParallaxScrollView>
+
+    <LinearLayout
+        android:id="@+id/container_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+    </LinearLayout>
+
+</RelativeLayout>

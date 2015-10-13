@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Soldty</string>
+
+    <string name="title_section1">Home</string>
+    <string name="title_section2">Favoritos</string>
+    <string name="title_section3">Configuraciones</string>
+
+    <string name="version_app">Soldty Beta pre Final</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Ajustes</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_search">Busqueda</string>
+    <string name="action_filter">Filtro</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="nav_item_home">Home</string>
+    <string name="nav_item_favorites">Favoritos</string>
+    <string name="nav_item_agents">Ayuda</string>
+    <string name="nav_item_access">Acceso Agencias</string>
+
+    <!-- navigation drawer item labels  -->
+    <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_home</item>
+        <item>@string/nav_item_favorites</item>
+        <item>@string/nav_item_agents</item>
+        <item>@string/nav_item_access</item>
+    </string-array>
+
+    <string name="title_avisos">Mis Avisos</string>
+    <string name="title_access">Acceso</string>
+    <string name="title_agentes">Ayuda</string>
+    <string name="title_favorites">Favoritos</string>
+    <string name="title_home">Soldty</string>
+
+    <string name="skip_button">SALTAR</string>
+    <string name="done_button">OK</string>
+</resources>

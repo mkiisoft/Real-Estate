@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF">
+
+    <Button
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:text="DESLOGUEO"
+        android:id="@+id/user_logout"
+        android:background="@drawable/login_btn"
+        android:textColor="@color/checktxt"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp" />
+
+    <Button
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:text="GUARDAR"
+        android:id="@+id/user_edit_btn"
+        android:background="@drawable/login_btn"
+        android:textColor="@color/checktxt"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/soldty_red"
+        android:id="@+id/profile_relative_top">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="70dp">
+
+            <com.renderas.soldty.utils.RoundedImageView
+                android:id="@+id/edit_profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/emptypro"
+                app:corner_radius="100dp"
+                app:border_width="3dp"
+                app:border_color="#ffffff"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="username"
+                android:id="@+id/edit_profile_user"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/profile_relative_info"
+        android:layout_below="@+id/profile_relative_top"
+        android:layout_above="@+id/user_logout"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:text="NOMBRE VISIBLE"
+            android:id="@+id/info_name_visible"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:paddingLeft="2dp" />
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:text="usuario"
+            android:id="@+id/info_name_text"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/info_name_visible"
+            android:gravity="bottom"
+            android:paddingBottom="10dp"
+            android:textSize="20dp"
+            android:paddingLeft="1dp" />
+
+        <com.andreabaccega.widget.FormEditText
+            app:testType="nocheck"
+            app:emptyErrorString="Ingresa tu nombre"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:id="@+id/info_name_edit"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/info_name_visible"
+            android:hint="Ingresa tu nombre"
+            android:visibility="invisible"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:text="EMAIL"
+            android:id="@+id/inf_email_visible"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:layout_below="@+id/info_name_edit"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="2dp" />
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:text="email"
+            android:id="@+id/info_email_text"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/inf_email_visible"
+            android:gravity="bottom"
+            android:paddingBottom="10dp"
+            android:textSize="20dp"
+            android:paddingLeft="1dp" />
+
+        <com.andreabaccega.widget.FormEditText
+            app:testType="email"
+            app:customRegexp="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+            app:testErrorString="Ingresa un email válido"
+            app:emptyErrorString="Ingresa tu email"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:id="@+id/info_email_edit"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/inf_email_visible"
+            android:hint="Ingresa tu email"
+            android:visibility="invisible"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/container_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+    </LinearLayout>
+
+
+</RelativeLayout>
