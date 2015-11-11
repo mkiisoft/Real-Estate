@@ -26,9 +26,11 @@ import com.nhaarman.listviewanimations.appearance.simple.SwingBottomInAnimationA
 import com.renderas.soldty.adapter.ListAdapter;
 import com.renderas.soldty.utils.CircularProgressBar;
 import com.renderas.soldty.utils.Utils;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -488,7 +490,7 @@ public class FilterActivity extends ActionBarActivity {
 
             ImageView icon = (ImageView) rows.findViewById(R.id.spinner_img);
 
-            Picasso.with(FilterActivity.this).load(mSpinnerArrayImg.get(position)).into(icon);
+            Glide.with(FilterActivity.this).load(mSpinnerArrayImg.get(position)).into(icon);
 
             return rows;
         }

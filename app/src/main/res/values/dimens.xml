@@ -13,7 +13,14 @@
     <dimen name="fab_stroke_width">0.5dp</dimen>
     <dimen name="fab_actions_spacing">16dp</dimen>
     <dimen name="fab_labels_margin">8dp</dimen>
+
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
+    <!-- footer loading style -->
+    <dimen name="loading_view_progress_size">50dp</dimen>
+    <dimen name="loading_view_margin_layout">10dp</dimen>
+    <dimen name="loading_view_margin_right">5dp</dimen>
+    <dimen name="button_text_size">20dp</dimen>
+
 </resources>

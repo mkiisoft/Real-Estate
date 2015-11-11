@@ -17,7 +17,7 @@ import android.net.NetworkInfo;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 
 public class Utils {
 

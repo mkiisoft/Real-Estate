@@ -42,7 +42,9 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.renderas.soldty.sql.PropertyDB;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 /**
  * List adapter for storing TODOs data
@@ -132,7 +134,7 @@ public class PropertyListAdapter extends CursorAdapter {
 
         appicon = (ImageView) view.findViewById(R.id.picture);
 
-        Picasso.with(context).load(cursor.getString(cursor.getColumnIndex("list_thumb"))).into(appicon);
+        Glide.with(context).load(cursor.getString(cursor.getColumnIndex("list_thumb"))).into(appicon);
 
         // Locate the TextViews in news_item.xml
         title = (TextView) view.findViewById(R.id.item_title);

@@ -38,9 +38,11 @@ import com.renderas.soldty.adapter.ListAdapter;
 import com.renderas.soldty.utils.CircularProgressBar;
 import com.renderas.soldty.utils.KeySaver;
 import com.renderas.soldty.utils.Utils;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

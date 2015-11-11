@@ -36,8 +36,9 @@ import com.renderas.soldty.adapter.NavigationDrawerAdapter;
 import com.renderas.soldty.model.NavDrawerItem;
 import com.renderas.soldty.utils.KeySaver;
 import com.renderas.soldty.utils.RoundedImageView;
-import com.squareup.picasso.Picasso;
-
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 public class FragmentDrawer extends Fragment {
 
@@ -128,7 +129,7 @@ public class FragmentDrawer extends Fragment {
         }
 
         if (KeySaver.isExist(getActivity(), "user_avatar")) {
-            Picasso.with(getActivity()).load(UserAvatar()).into(mUserAvatar);
+            Glide.with(getActivity()).load(UserAvatar()).into(mUserAvatar);
         }
 
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
@@ -227,6 +228,11 @@ public class FragmentDrawer extends Fragment {
         @Override
         public void onTouchEvent(RecyclerView rv, MotionEvent e) {
         }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
     }
 
     public interface FragmentDrawerListener {
@@ -254,7 +260,7 @@ public class FragmentDrawer extends Fragment {
 
                 mUserName.setText(UserName());
                 if (KeySaver.isExist(getActivity(), "user_avatar")) {
-                    Picasso.with(getActivity()).load(UserAvatar()).into(mUserAvatar);
+                    Glide.with(getActivity()).load(UserAvatar()).into(mUserAvatar);
                 }
             }
         }else{

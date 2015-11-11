@@ -44,7 +44,9 @@ import com.renderas.soldty.utils.JSONArrayfunctions;
 import com.renderas.soldty.utils.KeySaver;
 import com.renderas.soldty.utils.RoundedImageView;
 import com.renderas.soldty.utils.Utils;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -214,7 +216,7 @@ public class AgentActivity extends ActionBarActivity {
         }
 
         swipeView = (SwipeRefreshLayout) findViewById(R.id.swipe);
-        swipeView.setColorScheme(android.R.color.holo_red_light, android.R.color.holo_red_dark, android.R.color.holo_red_light, android.R.color.holo_red_dark);
+        swipeView.setColorScheme(setColor(android.R.color.holo_red_light), setColor(android.R.color.holo_red_dark), setColor(android.R.color.holo_red_light), setColor(android.R.color.holo_red_dark));
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -247,6 +249,11 @@ public class AgentActivity extends ActionBarActivity {
                     swipeView.setEnabled(false);
             }
         });
+    }
+
+    private int setColor(int color){
+        getResources().getColor(color);
+        return color;
     }
 
     @Override
@@ -540,7 +547,7 @@ public class AgentActivity extends ActionBarActivity {
 
             appicon = (ImageView) itemView.findViewById(R.id.picture);
 
-            Picasso.with(AgentActivity.this).load(resultp.get(SCREEN)).into(appicon);
+            Glide.with(AgentActivity.this).load(resultp.get(SCREEN)).into(appicon);
 
             // Locate the TextViews in news_item.xml
             title = (TextView) itemView.findViewById(R.id.item_title);

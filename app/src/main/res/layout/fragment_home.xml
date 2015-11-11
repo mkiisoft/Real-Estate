@@ -21,7 +21,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <ListView
+        <com.renderas.soldty.utils.paginglistview.PagingListView
             android:id="@+id/home_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

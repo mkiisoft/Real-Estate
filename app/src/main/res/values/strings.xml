@@ -37,5 +37,8 @@
     <string name="title_home">Soldty</string>
 
     <string name="skip_button">SALTAR</string>
-    <string name="done_button">OK</string>
+    <string name="done_button">LISTO</string>
+
+    <!-- paging gridview -->
+    <string name="loading">Cargando&#8230;</string>
 </resources>

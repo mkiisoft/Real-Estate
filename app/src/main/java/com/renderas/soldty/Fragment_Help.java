@@ -16,8 +16,8 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-import org.apache.http.Header;
-import org.apache.http.auth.AuthScope;
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.auth.AuthScope;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

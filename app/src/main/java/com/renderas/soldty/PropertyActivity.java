@@ -59,16 +59,16 @@ import com.renderas.soldty.utils.JSONfunctions;
 import com.renderas.soldty.utils.KeySaver;
 import com.renderas.soldty.utils.RoundedImageView;
 
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.AbstractHttpEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.entity.AbstractHttpEntity;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.message.BasicNameValuePair;
+import cz.msebera.android.httpclient.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,7 +89,9 @@ import uk.co.chrisjenx.paralloid.views.ParallaxScrollView;
 import com.loopj.android.http.*;
 import com.renderas.soldty.utils.SquareImageView;
 import com.renderas.soldty.utils.WorkAroundMapFragment;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 /**
  * Created by Mariano on 03/08/2015.
@@ -411,9 +413,9 @@ public class PropertyActivity extends ActionBarActivity {
 
         }
 
-        Picasso.with(this).load(mMainPhoto).into(mFullImage);
+        Glide.with(this).load(mMainPhoto).into(mFullImage);
 
-        Picasso.with(this).load(mAgentPhoto).into(mAuthorImg);
+        Glide.with(this).load(mAgentPhoto).into(mAuthorImg);
 
 
         new createGallery().execute();

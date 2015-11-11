@@ -26,7 +26,9 @@ import com.renderas.soldty.PropertyActivity;
 import com.renderas.soldty.R;
 import com.renderas.soldty.sql.PropertyDB;
 import com.renderas.soldty.utils.KeySaver;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 /**
  * List adapter for storing TODOs data
@@ -119,7 +121,7 @@ public class ListAdapterSave extends ArrayAdapter<PropertyDB> {
 
         appicon = (ImageView) rowView.findViewById(R.id.picture);
 
-        Picasso.with(context).load(cardList.get(position).getImgThumb()).into(appicon);
+        Glide.with(context).load(cardList.get(position).getImgThumb()).into(appicon);
 
         // Locate the TextViews in news_item.xml
         title = (TextView) rowView.findViewById(R.id.item_title);
