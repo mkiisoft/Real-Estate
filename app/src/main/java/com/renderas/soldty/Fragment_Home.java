@@ -217,6 +217,7 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
                         try {
                             pager = 1;
                             arraylist.clear();
+                            mHasRequestedMore = true;
                             AsyncConnection(parseURL + String.valueOf(pager));
                         } catch (Exception e) {
                             System.out.println(e);
@@ -225,21 +226,6 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
                 }, 500);
             }
         });
-
-//        mListView.setPagingableListener(new PagingListView.Pagingable() {
-//            @Override
-//            public void onLoadMoreItems() {
-//                if(!mHasRequestedMore){
-//                    if (pager <= totalPages) {
-//                        Log.e("url final",parseURL + String.valueOf(pager));
-//                        AsyncConnection(parseURL + String.valueOf(pager));
-//                        mHasRequestedMore = true;
-//                    } else {
-//                        mListView.onFinishLoading(false, null);
-//                    }
-//                }
-//            }
-//        });
 
         mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -254,7 +240,6 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
                     if(lastInScreen >= totalItemCount){
                         if(pager <= totalPages) {
                             mHasRequestedMore = true;
-                            Log.e("urlfinal", String.valueOf(parseURL + String.valueOf(pager)));
                             AsyncConnection(parseURL + String.valueOf(pager));
                         }else {
                             mListView.onFinishLoading(false, null);
