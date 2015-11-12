@@ -35,6 +35,7 @@ import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFra
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.nhaarman.listviewanimations.appearance.simple.SwingBottomInAnimationAdapter;
 import com.renderas.soldty.adapter.ListAdapter;
 import com.renderas.soldty.utils.FloatingActionButton;
 
@@ -137,6 +138,7 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
     private FloatingActionButton mapBtn;
     private boolean mHasRequestedMore = true;
     private ListAdapter adapter;
+    private SwingBottomInAnimationAdapter swingBottomInAnimationAdapter;
 
     public Fragment_Home() {
         // Required empty public constructor
@@ -219,6 +221,7 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
                             arraylist.clear();
                             mHasRequestedMore = true;
                             AsyncConnection(parseURL + String.valueOf(pager));
+                            mListView.removeFooterView(false);
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -236,24 +239,31 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int lastInScreen = firstVisibleItem + visibleItemCount;
-                if(!mHasRequestedMore){
-                    if(lastInScreen >= totalItemCount){
-                        if(pager <= totalPages) {
+                if (!mHasRequestedMore) {
+                    if (lastInScreen >= totalItemCount) {
+                        if (pager <= totalPages) {
                             mHasRequestedMore = true;
                             AsyncConnection(parseURL + String.valueOf(pager));
-                        }else {
-                            mListView.onFinishLoading(false, null);
+                        } else {
+                            mListView.removeFooterView(true);
                         }
                     }
                 }
 
-                if (firstVisibleItem == 0){
+                if (firstVisibleItem == 0) {
                     swipeView.setEnabled(true);
                 } else {
                     swipeView.setEnabled(false);
                 }
             }
         });
+
+        swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(new ListAdapter(getActivity(), arraylist));
+        swingBottomInAnimationAdapter.setAbsListView(mListView);
+
+        assert swingBottomInAnimationAdapter.getViewAnimator() != null;
+        swingBottomInAnimationAdapter.getViewAnimator().setInitialDelayMillis(300);
+        swingBottomInAnimationAdapter.getViewAnimator().setAnimationDurationMillis(400);
 
         return rootView;
     }
@@ -345,18 +355,12 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
         if (requestCode == 123) {
             if (resultCode == -1) {
                 if (KeySaver.isExist(getActivity(), "premium_true")) {
-                    pager = 1;
-                    arraylist.clear();
-                    parseURL = baseURL + parseURLPremium();
-                    AsyncConnection(parseURL + String.valueOf(pager));
+                    swingBottomInAnimationAdapter.notifyDataSetChanged();
                 }
             }
             if (resultCode == 0) {
                 if (!KeySaver.isExist(getActivity(), "premium_true")) {
-                    pager = 1;
-                    arraylist.clear();
-                    parseURL = baseURL + parseURLNormal();
-                    AsyncConnection(parseURL + String.valueOf(pager));
+                    swingBottomInAnimationAdapter.notifyDataSetChanged();
                 }
             }
         }
@@ -372,6 +376,7 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                intent.putExtra("nonhome", "true");
                 getActivity().startActivityForResult(intent, 123);
                 return true;
             default:
@@ -557,11 +562,10 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
                                                                 }
 
                                                                 if (pager < 2) {
-                                                                    adapter = new ListAdapter(getActivity(), arraylist);
-                                                                    mListView.setAdapter(adapter);
+                                                                    mListView.setAdapter(swingBottomInAnimationAdapter);
                                                                 }
                                                                 pager++;
-                                                                adapter.notifyDataSetChanged();
+                                                                swingBottomInAnimationAdapter.notifyDataSetChanged();
                                                                 mHasRequestedMore = false;
                                                             }
                                                         }
@@ -574,8 +578,8 @@ public class Fragment_Home extends StatedFragment implements LocationListener {
 
                     @Override
                     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                        Toast.makeText(getActivity(), "Desliza para recargar. Revisa tu conexion", Toast.LENGTH_SHORT).show();
                         progressCircular.setVisibility(View.GONE);
+                        Toast.makeText(getActivity(), "Desliza para recargar. Revisa tu conexion", Toast.LENGTH_SHORT).show();
                     }
 
                 }

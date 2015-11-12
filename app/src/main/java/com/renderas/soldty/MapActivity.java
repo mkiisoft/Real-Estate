@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.renderas.soldty.utils.CircularProgressBar;
 import com.renderas.soldty.utils.FloatingActionButton;
 import com.renderas.soldty.utils.Utils;
 
@@ -45,17 +46,23 @@ import java.util.List;
  * Created by Mariano on 16/08/2015.
  */
 public class MapActivity extends ActionBarActivity implements GoogleMap.OnMarkerClickListener {
+
     private Toolbar mToolbar;
     private FloatingActionButton loadBtn;
     private MapView mapView;
     private Animation a;
     private RotateAnimation rotateAnimation;
     private GoogleMap googleMap;
+
     private String mParseURL;
     private Integer pager = 1;
+    int totalPages  = 1;
+    private boolean mHasRequestedMore = true;
+
     private JSONArray jsonnews;
     private MarkerOptions markerOptions;
     private Marker melbourne;
+    private CircularProgressBar progressCircular;
     private ArrayList<HashMap<String, String>> arraylist;
 
     // Json Parser
@@ -98,7 +105,6 @@ public class MapActivity extends ActionBarActivity implements GoogleMap.OnMarker
         final Intent mapIntent = getIntent();
 
         mParseURL = mapIntent.getStringExtra("pathURL");
-        Log.e("the url", mParseURL);
 
         mapView = (MapView) findViewById(R.id.mapViewFull);
         mapView.onCreate(savedInstanceState);
@@ -115,6 +121,8 @@ public class MapActivity extends ActionBarActivity implements GoogleMap.OnMarker
             e.printStackTrace();
         }
 
+        progressCircular = (CircularProgressBar) findViewById(R.id.circularProgress);
+
         AsyncConnection(mParseURL + String.valueOf(pager));
 
         loadBtn = (FloatingActionButton) findViewById(R.id.load_floating);
@@ -122,9 +130,18 @@ public class MapActivity extends ActionBarActivity implements GoogleMap.OnMarker
 
             @Override
             public void onClick(View v) {
-
+                if(!mHasRequestedMore){
+                    if (pager <= totalPages) {
+                        mHasRequestedMore = true;
+                        AsyncConnection(mParseURL + String.valueOf(pager));
+                    } else {
+                        loadBtn.setVisibility(View.GONE);
+                    }
+                }
             }
         });
+
+        loadBtn.setVisibility(View.GONE);
 
 
     }
@@ -180,8 +197,13 @@ public class MapActivity extends ActionBarActivity implements GoogleMap.OnMarker
         new PropertyMap().get(urlConnection, null, new AsyncHttpResponseHandler() {
 
             @Override
+            public void onStart() {
+                progressCircular.setVisibility(View.VISIBLE);
+            }
+
+            @Override
             public void onSuccess(int i, Header[] headers, byte[] response) {
-                final int totalPages = Integer.parseInt(Utils.convertHeadersToHashMap(headers).get("X-WP-TotalPages"));
+                totalPages = Integer.parseInt(Utils.convertHeadersToHashMap(headers).get("X-WP-TotalPages"));
 
                 try {
 
@@ -191,11 +213,11 @@ public class MapActivity extends ActionBarActivity implements GoogleMap.OnMarker
                                                        @Override
                                                        public void run() {
 
-                                                           if(totalPages > 1){
-                                                               loadBtn.setVisibility(View.VISIBLE);
-                                                           }else{
-                                                               loadBtn.setVisibility(View.GONE);
-                                                           }
+                                                           loadBtn.setVisibility(View.VISIBLE);
+                                                           progressCircular.setVisibility(View.GONE);
+
+                                                           pager++;
+                                                           mHasRequestedMore = false;
 
                                                            arraylist = new ArrayList<HashMap<String, String>>();
 
@@ -267,7 +289,6 @@ public class MapActivity extends ActionBarActivity implements GoogleMap.OnMarker
                                                                            JSONObject json_the_city = json_city.getJSONObject(1);
                                                                            map.put("city", json_the_city.getString("name"));
 
-                                                                           Log.e("ciudad", json_the_city.getString("name"));
                                                                        } else {
                                                                            map.put("city", "");
                                                                        }
@@ -277,7 +298,7 @@ public class MapActivity extends ActionBarActivity implements GoogleMap.OnMarker
                                                                    try {
                                                                        boolean bool = json_marker.getBoolean("detail_images");
 
-                                                                       if (bool == false) {
+                                                                       if (!bool) {
                                                                            map.put("gallery_array", "[]");
                                                                        }
                                                                    } catch (JSONException e) {

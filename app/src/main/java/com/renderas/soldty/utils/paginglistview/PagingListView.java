@@ -19,6 +19,7 @@ public class PagingListView extends ListView {
     private Pagingable pagingableListener;
     private LoadingView loadingView;
     private OnScrollListener onScrollListener;
+//    private com.renderas.soldty.utils.paginglistview.LoadingView loadingView;
 
     public PagingListView(Context context) {
         super(context);
@@ -55,6 +56,17 @@ public class PagingListView extends ListView {
             addFooterView(loadingView);
             ListAdapter adapter = ((HeaderViewListAdapter) getAdapter()).getWrappedAdapter();
             setAdapter(adapter);
+        }
+    }
+
+    public void removeFooterView(boolean footer) {
+        boolean remove = footer;
+        if (loadingView != null && !remove) {
+            removeFooterView(loadingView);
+            loadingView = new com.renderas.soldty.utils.paginglistview.LoadingView(getContext());
+            addFooterView(loadingView);
+        } else if (loadingView != null && remove) {
+            removeFooterView(loadingView);
         }
     }
 

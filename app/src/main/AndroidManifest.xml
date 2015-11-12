@@ -84,8 +84,8 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDdKcGJjG9mTNk8bFqJtXbGWkJaMz3fq28" />
-
+            android:value="AIzaSyAx7zVwSOeAzU18NJzSqwAuXDN8VFZzj0U" />
+        <!-- AIzaSyAom3vfqtywq6b4KKETrEWUhKYO3n9Bn3w -->
         <provider
             android:name="com.renderas.soldty.sql.PropertyProvider"
             android:authorities="com.renderas.soldty.sql.PropertyProvider"

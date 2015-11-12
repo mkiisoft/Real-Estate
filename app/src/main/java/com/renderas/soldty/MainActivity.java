@@ -143,6 +143,7 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            intent.putExtra("nonhome", "true");
             startActivityForResult(intent, 123);
             return true;
         }

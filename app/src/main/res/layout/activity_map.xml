@@ -24,6 +24,21 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp" />
 
+    <com.renderas.soldty.utils.CircularProgressBar
+        android:id="@+id/circularProgress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        app:cpb_color="#FFee44"
+        app:cpb_colors="@array/gplus_colors"
+        app:cpb_max_sweep_angle="300"
+        app:cpb_min_sweep_angle="10"
+        app:cpb_rotation_speed="1.0"
+        app:cpb_stroke_width="4dp"
+        app:cpb_sweep_speed="1.0" />
+
     <LinearLayout
         android:id="@+id/container_toolbar"
         android:layout_width="match_parent"
